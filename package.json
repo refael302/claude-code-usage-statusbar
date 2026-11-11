@@ -1,0 +1,102 @@
+{
+  "name": "claude-code-usage-statusbar",
+  "displayName": "Claude Code Usage Status Bar",
+  "description": "Show your Claude Code 5-hour and 7-day quota usage in the Cursor/VS Code status bar.",
+  "version": "0.1.0",
+  "publisher": "refael302",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "anthropic",
+    "usage",
+    "quota",
+    "rate limit",
+    "status bar"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/refael302/claude-code-usage-statusbar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/refael302/claude-code-usage-statusbar/issues"
+  },
+  "homepage": "https://github.com/refael302/claude-code-usage-statusbar#readme",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeUsage.refresh",
+        "title": "Claude Usage: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "claudeUsage.openSettings",
+        "title": "Claude Usage: Open Settings"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Code Usage",
+      "properties": {
+        "claudeUsage.refreshIntervalSeconds": {
+          "type": "number",
+          "default": 180,
+          "minimum": 60,
+          "maximum": 3600,
+          "description": "How often to poll Claude usage, in seconds (minimum 60)."
+        },
+        "claudeUsage.warningThreshold": {
+          "type": "number",
+          "default": 60,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Utilization % at which the status bar turns warning color."
+        },
+        "claudeUsage.errorThreshold": {
+          "type": "number",
+          "default": 80,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Utilization % at which the status bar turns error color."
+        },
+        "claudeUsage.showSevenDay": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day quota window next to the 5-hour window."
+        },
+        "claudeUsage.claudeDir": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to the Claude config directory. Leave empty for `~/.claude` (or `CLAUDE_CONFIG_DIR`)."
+        },
+        "claudeUsage.statusBarPriority": {
+          "type": "number",
+          "default": 100,
+          "description": "Status bar item priority. Higher values sit further right."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run compile && vsce package --no-dependencies",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "typescript": "^5.4.0"
+  }
+}
