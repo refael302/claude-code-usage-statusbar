@@ -2,7 +2,7 @@
   "name": "claude-code-usage-statusbar",
   "displayName": "Claude Code Usage Status Bar",
   "description": "Show your Claude Code 5-hour and 7-day quota usage in the Cursor/VS Code status bar.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "refael302",
   "license": "MIT",
   "engines": {

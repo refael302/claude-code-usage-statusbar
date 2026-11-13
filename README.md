@@ -28,8 +28,10 @@ Then in Cursor: **Extensions** → `…` → **Install from VSIX…** → pick t
 Or from a terminal (adjust the path):
 
 ```bash
-cursor --install-extension claude-code-usage-statusbar-0.1.0.vsix
+cursor --install-extension claude-code-usage-statusbar-0.1.1.vsix
 ```
+
+The extension refreshes expired Claude Code OAuth tokens automatically (same flow as Claude Code). You should only need `claude auth login` again if the refresh token itself was revoked.
 
 ### From source (Extension Development Host)
 
